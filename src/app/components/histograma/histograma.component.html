@@ -1,3 +1,74 @@
-<p>histograma works!</p>
+<form [formGroup]="histogramaForm" (ngSubmit)="generarHistograma()">
+    <div class="container">
+        <h1 class="text-center m-3">Histograma</h1>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-floating">
+                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="n">
+                  <label>Tamaño (n)</label>
+                </div>
+            </div>
 
-<!-- table with 5 rows -->
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input autocomplete="no" type="text" name="seemilla" class="form-control" formControlName="semilla">
+                    <label>Semilla</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-floating">
+                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="modulo">
+                  <label>Módulo</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-floating">
+                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="multiplicador">
+                  <label>Multiplicador</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-floating">
+                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="incremento">
+                  <label>Incremento</label>
+                </div>
+            </div>  
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-lg w-100 h-100 btn-success">GENERAR</button>
+            </div>
+        </div>
+
+        <table class="m-5 table table-bordered" *ngIf="histograma?.intervalos?.length != 0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Inferior</th>
+                    <th scope="col">Superior</th>
+                    <th scope="col">Marca Clase</th>
+                    <th scope="col">Frecuencia</th>
+                    <th scope="col">Proporcion</th>
+                    <th scope="col">Frecuencia Acumulada</th>
+                    <th scope="col">Proporcion Acumulada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let intervalo of histograma?.intervalos">
+                    <th scope="row">{{intervalo.intervalo}}</th>
+                    <td>{{intervalo.inferior}}</td>
+                    <td>{{intervalo.superior}}</td>
+                    <td>{{intervalo.marcaClase}}</td>
+                    <td>{{intervalo.frecuencia}}</td>
+                    <td>{{intervalo.proporcion}}</td>
+                    <td>{{intervalo.frecuenciaAcumulada}}</td>
+                    <td>{{intervalo.proporcionAcumulada}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</form>
