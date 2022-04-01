@@ -13,6 +13,7 @@ export class HistogramaComponent implements OnInit {
 
   histogramaForm: FormGroup;
   histograma?: Histograma;
+  cargado: boolean = false;
 
   constructor(private histogramaService: GetHistogramaHttpService, private fb: FormBuilder) {
     this.histogramaForm = this.crearFormulario();
@@ -36,6 +37,7 @@ export class HistogramaComponent implements OnInit {
     this.histogramaService.getHistograma(req).subscribe(
       (histograma: Histograma) => {
         this.histograma = histograma;
+        this.cargado = true;
       }
     );
   }
@@ -55,7 +57,35 @@ export class HistogramaComponent implements OnInit {
       incremento: incremento
     };
 
+    if (this.histogramaForm.invalid) {
+      return Object.values(this.histogramaForm.controls).forEach(control => {
+        if(control instanceof FormGroup) {
+          Object.values(control.controls).forEach(ctrl => ctrl.markAsTouched());
+        }
+        control.markAsTouched();
+      });
+    }
+
     this.cargarHistograma(req);
   }
 
+  get nInvalido() {
+    return this.histogramaForm.get('n')?.invalid && this.histogramaForm.get('n')?.touched;
+  }
+
+  get semillaInvalido() {
+    return this.histogramaForm.get('semilla')?.invalid && this.histogramaForm.get('semilla')?.touched;
+  }
+
+  get moduloInvalido() {
+    return this.histogramaForm.get('modulo')?.invalid && this.histogramaForm.get('modulo')?.touched;
+  }
+
+  get multiplicadorInvalido() {
+    return this.histogramaForm.get('multiplicador')?.invalid && this.histogramaForm.get('multiplicador')?.touched;
+  }
+
+  get incrementoInvalido() {
+    return this.histogramaForm.get('incremento')?.invalid && this.histogramaForm.get('incremento')?.touched;
+  }
 }

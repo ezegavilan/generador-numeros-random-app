@@ -4,35 +4,35 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="n">
+                  <input [class.is-invalid]="nInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="n">
                   <label>Tamaño (n)</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                    <input autocomplete="no" type="text" name="seemilla" class="form-control" formControlName="semilla">
+                    <input [class.is-invalid]="semillaInvalido" autocomplete="no" type="text" name="seemilla" class="form-control" formControlName="semilla">
                     <label>Semilla</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="modulo">
+                  <input [class.is-invalid]="moduloInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="modulo">
                   <label>Módulo</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="multiplicador">
+                  <input [class.is-invalid]="multiplicadorInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="multiplicador">
                   <label>Multiplicador</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="incremento">
+                  <input [class.is-invalid]="incrementoInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="incremento">
                   <label>Incremento</label>
                 </div>
             </div>  
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <table class="m-5 table table-bordered" *ngIf="histograma?.intervalos?.length != 0">
+        <table class="m-5 table table-bordered" *ngIf="cargado">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -65,7 +65,6 @@
                     <td>{{intervalo.proporcion}}</td>
                     <td>{{intervalo.frecuenciaAcumulada}}</td>
                     <td>{{intervalo.proporcionAcumulada}}</td>
-
                 </tr>
             </tbody>
         </table>
