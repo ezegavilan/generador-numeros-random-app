@@ -9,7 +9,7 @@ import { Histograma } from '../models/histograma';
 })
 export class GetHistogramaHttpService {
 
-  private url = 'http://localhost:8080/api/histograma';
+  private url = 'http://localhost:8080/api/histograma/custom';
 
   constructor(private http: HttpClient) {
 

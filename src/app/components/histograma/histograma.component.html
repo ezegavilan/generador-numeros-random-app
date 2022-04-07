@@ -4,70 +4,110 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input [class.is-invalid]="nInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="n">
-                  <label>Tamaño (n)</label>
+                    <input [class.is-invalid]="nInvalido" autocomplete="no" type="text" class="form-control"
+                        id="floatingInputGrid" formControlName="n">
+                    <label>Tamaño (n)</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                    <input [class.is-invalid]="semillaInvalido" autocomplete="no" type="text" name="seemilla" class="form-control" formControlName="semilla">
+                    <input [class.is-invalid]="semillaInvalido" autocomplete="no" type="text" name="seemilla"
+                        class="form-control" formControlName="semilla">
                     <label>Semilla</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input [class.is-invalid]="moduloInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="modulo">
-                  <label>Módulo</label>
+                    <input [class.is-invalid]="moduloInvalido" autocomplete="no" type="text" class="form-control"
+                        id="floatingInputGrid" formControlName="modulo">
+                    <label>Módulo</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input [class.is-invalid]="multiplicadorInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="multiplicador">
-                  <label>Multiplicador</label>
+                    <input [class.is-invalid]="multiplicadorInvalido" autocomplete="no" type="text" class="form-control"
+                        id="floatingInputGrid" formControlName="multiplicador">
+                    <label>Multiplicador</label>
                 </div>
             </div>
 
             <div class="col-md-2">
                 <div class="form-floating">
-                  <input [class.is-invalid]="incrementoInvalido" autocomplete="no" type="text" class="form-control" id="floatingInputGrid" formControlName="incremento">
-                  <label>Incremento</label>
+                    <input [class.is-invalid]="incrementoInvalido" autocomplete="no" type="text" class="form-control"
+                        id="floatingInputGrid" formControlName="incremento">
+                    <label>Incremento</label>
                 </div>
-            </div>  
+            </div>
 
             <div class="col-md-2">
-                <button type="submit" class="btn btn-lg w-100 h-100 btn-success">GENERAR</button>
+                <div class="form-floating">
+                    <input [class.is-invalid]="incrementoInvalido" autocomplete="no" type="text" class="form-control"
+                        id="floatingInputGrid" formControlName="intervalos">
+                    <label>Intervalos</label>
+                </div>
             </div>
         </div>
 
-        <table class="m-5 table table-bordered" *ngIf="cargado">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Inferior</th>
-                    <th scope="col">Superior</th>
-                    <th scope="col">Marca Clase</th>
-                    <th scope="col">Frecuencia</th>
-                    <th scope="col">Proporcion</th>
-                    <th scope="col">Frecuencia Acumulada</th>
-                    <th scope="col">Proporcion Acumulada</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let intervalo of histograma?.intervalos">
-                    <th scope="row">{{intervalo.intervalo}}</th>
-                    <td>{{intervalo.inferior}}</td>
-                    <td>{{intervalo.superior}}</td>
-                    <td>{{intervalo.marcaClase}}</td>
-                    <td>{{intervalo.frecuencia}}</td>
-                    <td>{{intervalo.proporcion}}</td>
-                    <td>{{intervalo.frecuenciaAcumulada}}</td>
-                    <td>{{intervalo.proporcionAcumulada}}</td>
-                </tr>
-            </tbody>
-        </table>
-        
+        <div class="row m-3">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-lg w-25 h-100 btn-success">GENERAR</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                    <table class="m-5 table table-bordered" *ngIf="cargado">
+                        <thead>
+                            <tr>
+                                <th scope="col">i</th>
+                                <th scope="col">Xi</th>
+                                <th scope="col">RANDOM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let iteracion of tabla?.iteraciones">
+                                <th scope="row">{{iteracion.iteracion}}</th>
+                                <td>{{iteracion.xi}}</td>
+                                <td>{{iteracion.random}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-sm">
+                    <table class="m-5 table table-bordered" *ngIf="cargado">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Inferior</th>
+                                <th scope="col">Superior</th>
+                                <th scope="col">Marca Clase</th>
+                                <th scope="col">Frecuencia</th>
+                                <th scope="col">Proporcion</th>
+                                <th scope="col">Frecuencia Acumulada</th>
+                                <th scope="col">Proporcion Acumulada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let intervalo of histograma?.intervalos">
+                                <th scope="row">{{intervalo.intervalo}}</th>
+                                <td>{{intervalo.inferior}}</td>
+                                <td>{{intervalo.superior}}</td>
+                                <td>{{intervalo.marcaClase}}</td>
+                                <td>{{intervalo.frecuencia}}</td>
+                                <td>{{intervalo.proporcion}}</td>
+                                <td>{{intervalo.frecuenciaAcumulada}}</td>
+                                <td>{{intervalo.proporcionAcumulada}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+
     </div>
 </form>

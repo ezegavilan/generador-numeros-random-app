@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenerarHistogramaRequest } from 'src/app/models/generar-histograma-request';
 import { Histograma } from 'src/app/models/histograma';
 import { GetHistogramaHttpService } from 'src/app/services/get-histograma-http.service';
+import { GeneradorHttpService } from '../../services/generador-http.service';
+import { Tabla } from '../../models/tabla';
 
 @Component({
   selector: 'app-histograma',
@@ -13,9 +15,10 @@ export class HistogramaComponent implements OnInit {
 
   histogramaForm: FormGroup;
   histograma?: Histograma;
+  tabla?: Tabla;
   cargado: boolean = false;
 
-  constructor(private histogramaService: GetHistogramaHttpService, private fb: FormBuilder) {
+  constructor(private histogramaService: GetHistogramaHttpService, private generadorService: GeneradorHttpService, private fb: FormBuilder) {
     this.histogramaForm = this.crearFormulario();
   }
 
@@ -30,6 +33,7 @@ export class HistogramaComponent implements OnInit {
       modulo: ['', Validators.required],
       multiplicador: ['', Validators.required],
       incremento: ['', Validators.required],
+      intervalos: ['', Validators.required]
     });
   }
 
@@ -42,19 +46,29 @@ export class HistogramaComponent implements OnInit {
     );
   }
 
+  cargarTablaRandoms(req: GenerarHistogramaRequest): void {
+    this.generadorService.generar(req).subscribe(
+      (tabla: Tabla) => {
+        this.tabla = tabla;
+      }
+    );
+  }
+
   generarHistograma() {
     const n = this.histogramaForm.get('n')?.value;
     const semilla = this.histogramaForm.get('semilla')?.value;
     const modulo = this.histogramaForm.get('modulo')?.value;
     const multiplicador = this.histogramaForm.get('multiplicador')?.value;
     const incremento = this.histogramaForm.get('incremento')?.value;
+    const intervalos = this.histogramaForm.get('intervalos')?.value;
 
     let req: GenerarHistogramaRequest = {
       n: n,
       seed: semilla,
       mod: modulo,
       multiplicador: multiplicador,
-      incremento: incremento
+      incremento: incremento,
+      intervalos: intervalos
     };
 
     if (this.histogramaForm.invalid) {
@@ -67,6 +81,7 @@ export class HistogramaComponent implements OnInit {
     }
 
     this.cargarHistograma(req);
+    this.cargarTablaRandoms(req);
   }
 
   get nInvalido() {
