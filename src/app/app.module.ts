@@ -6,11 +6,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HistogramaComponent } from './components/histograma/histograma.component';
+import { GraficoComponent } from './components/histograma/grafico/grafico.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HistogramaComponent
+    HistogramaComponent,
+    GraficoComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,6 +21,7 @@ import { HistogramaComponent } from './components/histograma/histograma.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

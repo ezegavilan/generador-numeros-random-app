@@ -1,19 +1,21 @@
 export class Intervalo {
-    intervalo: number;
-    inferior: number;
-    superior: number;
-    marcaClase: number;
-    frecuencia: number;
-    proporcion: number;
-    frecuenciaAcumulada: number;
-    proporcionAcumulada: number
+    intervalo: string;
+    inferior: string;
+    superior: string;
+    marcaClase: string;
+    frecuencia: string;
+    frecuenciaEsperada: string;
+    proporcion: string;
+    frecuenciaAcumulada: string;
+    proporcionAcumulada: string;
 
-    constructor(intervalo: number, inferior: number, superior: number, marcaClase: number, frecuencia: number, proporcion: number, frecuenciaAcumulada: number, proporcionAcumulada: number) {
+    constructor(intervalo: string, inferior: string, superior: string, marcaClase: string, frecuencia: string, frecuenciaEsperada: string, proporcion: string, frecuenciaAcumulada: string, proporcionAcumulada: string) {
         this.intervalo = intervalo;
         this.inferior = inferior;
         this.superior = superior;
         this.marcaClase = marcaClase;
         this.frecuencia = frecuencia;
+        this.frecuenciaEsperada = frecuenciaEsperada;
         this.proporcion = proporcion;
         this.frecuenciaAcumulada = frecuenciaAcumulada;
         this.proporcionAcumulada = proporcionAcumulada;

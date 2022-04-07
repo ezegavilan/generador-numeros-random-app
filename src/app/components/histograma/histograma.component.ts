@@ -17,6 +17,7 @@ export class HistogramaComponent implements OnInit {
   histograma?: Histograma;
   tabla?: Tabla;
   cargado: boolean = false;
+  pruebaChiCuadrado: boolean = false;
 
   constructor(private histogramaService: GetHistogramaHttpService, private generadorService: GeneradorHttpService, private fb: FormBuilder) {
     this.histogramaForm = this.crearFormulario();
@@ -42,6 +43,7 @@ export class HistogramaComponent implements OnInit {
       (histograma: Histograma) => {
         this.histograma = histograma;
         this.cargado = true;
+        this.pruebaChiCuadrado = histograma.pruebaBondadChiCuadrado;
       }
     );
   }

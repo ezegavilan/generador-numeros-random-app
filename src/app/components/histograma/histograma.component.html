@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="form-floating">
-                    <input [class.is-invalid]="nInvalido" autocomplete="no" type="text" class="form-control"
+                    <input  [class.is-invalid]="nInvalido" autocomplete="no" type="text" class="form-control"
                         id="floatingInputGrid" formControlName="n">
                     <label>Tamaño (n)</label>
                 </div>
@@ -57,55 +57,63 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-2">
-                    <table class="m-5 table table-bordered" *ngIf="cargado">
-                        <thead>
-                            <tr>
-                                <th scope="col">i</th>
-                                <th scope="col">Xi</th>
-                                <th scope="col">RANDOM</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let iteracion of tabla?.iteraciones">
-                                <th scope="row">{{iteracion.iteracion}}</th>
-                                <td>{{iteracion.xi}}</td>
-                                <td>{{iteracion.random}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="row" *ngIf="cargado">
+            <div class="col-md-3 table-responsive margin-top-5">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">i</th>
+                            <th scope="col">Xi</th>
+                            <th scope="col">RANDOM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let iteracion of tabla?.iteraciones">
+                            <th scope="row">{{iteracion.iteracion}}</th>
+                            <td>{{iteracion.xi}}</td>
+                            <td>{{iteracion.random}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="col-md-1"></div>
 
             <div class="col-sm">
-                    <table class="m-5 table table-bordered" *ngIf="cargado">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Inferior</th>
-                                <th scope="col">Superior</th>
-                                <th scope="col">Marca Clase</th>
-                                <th scope="col">Frecuencia</th>
-                                <th scope="col">Proporcion</th>
-                                <th scope="col">Frecuencia Acumulada</th>
-                                <th scope="col">Proporcion Acumulada</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let intervalo of histograma?.intervalos">
-                                <th scope="row">{{intervalo.intervalo}}</th>
-                                <td>{{intervalo.inferior}}</td>
-                                <td>{{intervalo.superior}}</td>
-                                <td>{{intervalo.marcaClase}}</td>
-                                <td>{{intervalo.frecuencia}}</td>
-                                <td>{{intervalo.proporcion}}</td>
-                                <td>{{intervalo.frecuenciaAcumulada}}</td>
-                                <td>{{intervalo.proporcionAcumulada}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <table class="margin-top-5 table table-bordered" *ngIf="cargado">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Inferior</th>
+                            <th scope="col">Superior</th>
+                            <th scope="col">Marca Clase</th>
+                            <th scope="col">Frecuencia</th>
+                            <th scope="col">Frecuencia Esperada</th>
+                            <th scope="col">Proporcion</th>
+                            <th scope="col">Frecuencia Acumulada</th>
+                            <th scope="col">Proporcion Acumulada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let intervalo of histograma?.intervalos">
+                            <th scope="row">{{intervalo.intervalo}}</th>
+                            <td>{{intervalo.inferior}}</td>
+                            <td>{{intervalo.superior}}</td>
+                            <td>{{intervalo.marcaClase}}</td>
+                            <td>{{intervalo.frecuencia}}</td>
+                            <td>{{intervalo.frecuenciaEsperada}}</td>
+                            <td>{{intervalo.proporcion}}</td>
+                            <td>{{intervalo.frecuenciaAcumulada}}</td>
+                            <td>{{intervalo.proporcionAcumulada}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <app-grafico *ngIf="cargado" [histograma]="histograma"></app-grafico>
+
+                <h3 *ngIf="cargado">Prueba de Bondad Chi Cuadrado <span
+                        [ngClass]="{ 'text-success': pruebaChiCuadrado, 'text-danger': ! pruebaChiCuadrado }"><strong>{{pruebaChiCuadrado
+                            ? 'NO RECHAZADA' : 'RECHAZADA'}}</strong></span></h3>
             </div>
         </div>
 
