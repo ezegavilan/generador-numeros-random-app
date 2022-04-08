@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="text-center m-3">Histograma</h1>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <div class="form-floating">
                     <input  [class.is-invalid]="nInvalido" autocomplete="no" type="text" class="form-control"
                         id="floatingInputGrid" formControlName="n">
@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <div class="form-floating">
                     <input [class.is-invalid]="semillaInvalido" autocomplete="no" type="text" name="seemilla"
                         class="form-control" formControlName="semilla">
@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <div class="form-floating">
                     <input [class.is-invalid]="moduloInvalido" autocomplete="no" type="text" class="form-control"
                         id="floatingInputGrid" formControlName="modulo">
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <div class="form-floating">
                     <input [class.is-invalid]="multiplicadorInvalido" autocomplete="no" type="text" class="form-control"
                         id="floatingInputGrid" formControlName="multiplicador">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <div class="form-floating">
                     <input [class.is-invalid]="incrementoInvalido" autocomplete="no" type="text" class="form-control"
                         id="floatingInputGrid" formControlName="incremento">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <div class="form-floating">
                     <input [class.is-invalid]="incrementoInvalido" autocomplete="no" type="text" class="form-control"
                         id="floatingInputGrid" formControlName="intervalos">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="row" *ngIf="cargado">
-            <div class="col-md-3 table-responsive margin-top-5">
+            <div class="col-sm-3 table-responsive margin-top-5">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -77,9 +77,9 @@
                 </table>
             </div>
 
-            <div class="col-md-1"></div>
+            <!-- <div class="col-sm-1"></div> -->
 
-            <div class="col-sm">
+            <div class="col-sm ml-5">
                 <table class="margin-top-5 table table-bordered" *ngIf="cargado">
                     <thead>
                         <tr>
