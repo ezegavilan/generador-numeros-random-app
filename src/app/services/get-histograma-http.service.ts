@@ -9,7 +9,7 @@ import { Histograma } from '../models/histograma';
 })
 export class GetHistogramaHttpService {
 
-  private url = 'http://localhost:8080/api/histograma/custom';
+  private url = 'https://randoms.api.centaurit.online/api/histograma/custom';
 
   constructor(private http: HttpClient) {
 

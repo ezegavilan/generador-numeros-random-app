@@ -9,7 +9,7 @@ import { Tabla } from '../models/tabla';
 })
 export class GeneradorHttpService {
 
-  private url: string = 'http://localhost:8080/api/generador/custom';
+  private url: string = 'https://randoms.api.centaurit.online/api/generador/custom';
 
   constructor(private http: HttpClient) {
 
